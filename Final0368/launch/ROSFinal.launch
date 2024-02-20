@@ -1,0 +1,19 @@
+<launch>
+	<arg name="port" default="/dev/ttyACM0" />
+	<node name="Turtlesim_node" pkg= "turtlesim" type="turtlesim_node" output="screen">
+	</node>
+	
+	<node name="Turtle_Control" pkg= "Final0368" type="RemoteGui_Code.py" output="screen">
+	</node>
+	
+	<node name="MotionLog" pkg= "Final0368" type="MotionGui_Code.py" output="screen">
+	</node>
+	
+	<node name="Arduino_comand" pkg= "Final0368" type="arduino_commad.py" output="screen">
+	</node>
+	
+	<node name="rosserial_node" pkg="rosserial_arduino" type="serial_node.py" output="screen">
+		<param name="port" value="$(arg port)" />
+	</node>
+	
+</launch>
